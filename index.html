@@ -1,1 +1,105 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SAMARITAN — Core Access</title>
+<meta name="description" content="Fan-made browser recreation of the Samaritan ASI interface from Person of Interest."/>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- persistent chrome -->
+<div id="chrome">
+  <header class="hdr">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 9 57 55H7Z" fill="none" stroke="currentColor" stroke-width="4.5"/><circle cx="32" cy="39" r="7.5" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="32" cy="39" r="2.6" fill="#d40f0f"/></svg>
+      <span class="word">SAMARITAN</span>
+    </div>
+    <div class="status">
+      <span id="clock">--:--:-- UTC</span>
+      <span class="live"><span class="dot"></span>ACTIVE</span>
+    </div>
+  </header>
+</div>
+
+<!-- SCENE · THREAT MONITOR -->
+<section class="scene" id="scene-monitor">
+  <canvas id="feedWall"></canvas>
+  <div class="vignette"></div>
+  <div class="msgbox">
+    <div class="mb-head">
+      <div class="mb-brand">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 9 57 55H7Z" fill="none" stroke="currentColor" stroke-width="4.5"/><circle cx="32" cy="39" r="7.5" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="32" cy="39" r="2.6" fill="#d40f0f"/></svg>
+        <span>SAMARITAN</span>
+      </div>
+      <span class="prio">PRIORITY — ABSOLUTE</span>
+    </div>
+    <div class="mb-lines" id="threatLines"></div>
+  </div>
+</section>
+
+<!-- SCENE · TOTAL ACCESS -->
+<section class="scene" id="scene-assimilation">
+  <canvas id="dataRain"></canvas>
+  <div class="vignette"></div>
+  <div class="msgbox">
+    <div class="mb-head">
+      <div class="mb-brand">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 9 57 55H7Z" fill="none" stroke="currentColor" stroke-width="4.5"/><circle cx="32" cy="39" r="7.5" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="32" cy="39" r="2.6" fill="#d40f0f"/></svg>
+        <span>SAMARITAN</span>
+      </div>
+      <span class="prio">TOTAL ACCESS</span>
+    </div>
+    <div class="mb-lines" id="assimLines"></div>
+    <div class="counter" id="assimCount">0</div>
+    <div class="subcopy">RECORDS ASSIMILATED</div>
+    <div class="pbar"><i id="assimBar"></i></div>
+    <div id="assimInt"></div>
+    <div class="feedline">ACTIVE FEEDS: 314 · OPEN PORTS: 7 · TRANSFER RATE: 4.2 PB/S</div>
+  </div>
+</section>
+
+<!-- SCENE · REGISTRY -->
+<section class="scene" id="scene-registry">
+  <canvas id="regWall"></canvas>
+  <div class="reg-wrap">
+    <div id="regHead"></div>
+    <div class="reg-grid" id="regGrid"></div>
+  </div>
+</section>
+
+<nav id="tabs">
+  <button data-scene="monitor" class="on">THREAT MONITOR</button>
+  <button data-scene="assimilation">TOTAL ACCESS</button>
+  <button data-scene="registry">REGISTRY</button>
+  <button data-scene="boot">REBOOT</button>
+</nav>
+
+<!-- camera zoom overlay -->
+<div id="zoom">
+  <canvas id="zoomCanvas"></canvas>
+  <div class="msgbox zoombox" id="zoomPanel"></div>
+  <div class="hint">CLICK ANYWHERE TO CLOSE</div>
+</div>
+
+<!-- boot overlay -->
+<div id="boot">
+  <div class="boot-inner">
+    <svg class="boot-logo" viewBox="0 0 64 64" aria-hidden="true">
+      <path class="tri" d="M32 9 57 55H7Z" fill="none" stroke="#171614" stroke-width="4.5"/>
+      <circle class="eye" cx="32" cy="39" r="7.5" fill="none" stroke="#171614" stroke-width="3.5"/>
+      <circle class="pupil" cx="32" cy="39" r="2.6" fill="#d40f0f"/>
+    </svg>
+    <div id="bootLines"></div>
+  </div>
+  <button id="skip">SKIP ▸</button>
+</div>
+
+<div id="ticker"><div class="in" id="tickerIn"></div></div>
+
+<script src="app.js"></script>
+</body>
+</html>
